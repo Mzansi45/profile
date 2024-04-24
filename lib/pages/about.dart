@@ -78,16 +78,18 @@ class _AboutState extends State<About> {
               child: Text(
                 'Hello! I\'m Thulani, a versatile software developer proficient in mobile development with Flutter and Xamarin, web development using HTML, CSS, and JavaScript, database management with SQL, backend development with Java and Spring Boot, and game development with Unity and C#. With a strong foundation in software engineering principles, I specialize in crafting seamless user experiences and scalable solutions across various platforms. Whether it\'s building intuitive mobile apps, dynamic web applications, robust backend systems, or captivating games, I bring creativity, expertise, and a passion for innovation to every project I undertake.',
                 style: TextStyle(
-                    fontSize: MediaQuery.sizeOf(context).width * 0.014,
+                    //fontSize: MediaQuery.sizeOf(context).width * 0.014,
+                    fontSize: 18,
                     color: Theme.of(context).colorScheme.primary),
                 textAlign: TextAlign.center,
               ),
             ),
             SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
 
-            const Text("Soft Skills",
+            Text("Soft Skills",
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 30,
+                  color: Theme.of(context).colorScheme.onBackground,
                 )),
 
             //soft skills
@@ -100,47 +102,6 @@ class _AboutState extends State<About> {
               child: Wrap(
                 children: [
                   for (var skill in softSkills.keys)
-                    /*Container(
-                      child: CommentTreeWidget<Comment, Comment>(
-                        Comment(
-                            avatar: 'Skill',
-                            userName: skill,
-                            content: softSkills[skill]!),
-                        [
-                          Comment(
-                              avatar: 'null',
-                              userName: skill,
-                              content: softSkills[skill]!),
-                        ],
-                        treeThemeData: TreeThemeData(
-                            lineColor: Theme.of(context).colorScheme.tertiary,
-                            lineWidth: 1),
-                        avatarRoot: (context, data) => const PreferredSize(
-                          preferredSize: Size.fromRadius(2),
-                          child: CircleAvatar(
-                            radius: 2,
-                            backgroundColor: Colors.grey,
-                          ),
-                        ),
-                        avatarChild: (context, data) => const PreferredSize(
-                          preferredSize: Size.fromRadius(2),
-                          child: CircleAvatar(
-                            radius: 2,
-                            backgroundColor: Colors.grey,
-                          ),
-                        ),
-                        contentChild: (context, data) {
-                          return Text(data.content!,
-                              style: TextStyle(
-                                  color: Theme.of(context).colorScheme.primary));
-                        },
-                        contentRoot: (context, data) {
-                          return Text(data.userName!,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold));
-                        },
-                      ),
-                    ),*/
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.3,
                       height: MediaQuery.sizeOf(context).height * 0.1,
@@ -181,10 +142,9 @@ class _AboutState extends State<About> {
                               child: Text(
                                 data.content!,
                                 style: TextStyle(
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                    fontSize: MediaQuery.sizeOf(context).width *
-                                        0.008),
+                                    color: Theme.of(context).colorScheme.shadow,
+                                    //fontSize: MediaQuery.sizeOf(context).width * 0.008,
+                                    fontSize: 17),
                               ),
                             );
                           },
@@ -192,8 +152,11 @@ class _AboutState extends State<About> {
                             return Text(data.userName!,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: MediaQuery.sizeOf(context).width *
-                                        0.009));
+                                    //fontSize: MediaQuery.sizeOf(context).width * 0.009
+                                    fontSize: 20,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .background));
                           },
                         ),
                       ),
@@ -202,34 +165,17 @@ class _AboutState extends State<About> {
               ),
             ),
 
-            const Text("Technical Skills",
+            Text("Technical Skills",
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 30,
+                  color: Theme.of(context).colorScheme.onBackground,
                 )),
             Container(
               margin: EdgeInsets.only(
                   left: MediaQuery.sizeOf(context).width * 0.1,
                   right: MediaQuery.sizeOf(context).width * 0.1,
-                  top: 10.0,
-                  bottom: 10.0),
-              /*child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 5, // Number of columns in the grid
-                  crossAxisSpacing: MediaQuery.of(context).size.width *
-                      0.003, // Spacing between columns
-                  mainAxisSpacing: MediaQuery.of(context).size.height *
-                      0.007, // Spacing between rows
-                ),
-                itemCount: 10, // Total number of items in the grid
-                itemBuilder: (BuildContext context, int index) {
-                  // Builder function that returns a widget at the given index
-                  return Container(
-                    color: Colors.blue[100 * ((index % 9) + 1)],
-                    alignment: Alignment.center,
-                    child: Text('Item $index'),
-                  );
-                },
-              ),*/
+                  top: MediaQuery.sizeOf(context).height * 0.05,
+                  bottom: MediaQuery.sizeOf(context).height * 0.05),
               child: SingleChildScrollView(
                 child: Wrap(
                   children: [
@@ -260,57 +206,60 @@ class _AboutState extends State<About> {
                             });
                           }
                         },
-                        child: Container(
-                          padding: const EdgeInsets.all(12),
-                          margin: const EdgeInsets.all(5),
-                          height: MediaQuery.of(context).size.height * 0.25,
-                          width: MediaQuery.of(context).size.width * 0.18,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Theme.of(context).colorScheme.tertiary,
-                              width: 2,
+                        child: SingleChildScrollView(
+                          child: Container(
+                            padding: const EdgeInsets.all(20),
+                            margin: const EdgeInsets.all(5),
+                            height: MediaQuery.of(context).size.height * 0.255,
+                            width: MediaQuery.of(context).size.width * 0.18,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Theme.of(context).colorScheme.tertiary,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(2),
                             ),
-                            borderRadius: BorderRadius.circular(2),
-                          ),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                // Check if imageIcons is not empty before using firstWhere
-                                imageIcons.isNotEmpty
-                                    ? imageIcons.firstWhere(
-                                        (element) => element
-                                            .contains(skill.toLowerCase()),
-                                        // Provide a default value in case no matching element is found
-                                        orElse: () => 'default_image_path.png',
-                                      )
-                                    : 'default_image_path.png', // Use a default image path if imageIcons is empty
-                                height:
-                                    MediaQuery.of(context).size.height * 0.1,
-                                fit: BoxFit.fill,
-                              ),
-                              const SizedBox(height: 10),
-                              Text(
-                                skill,
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onBackground),
-                              ),
-                              const SizedBox(height: 10),
-                              Expanded(
-                                child: Text(
-                                  technicalSkills[skill]!,
-                                  maxLines: 4,
-                                  overflow: TextOverflow.ellipsis,
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  // Check if imageIcons is not empty before using firstWhere
+                                  imageIcons.isNotEmpty
+                                      ? imageIcons.firstWhere(
+                                          (element) => element
+                                              .contains(skill.toLowerCase()),
+                                          // Provide a default value in case no matching element is found
+                                          orElse: () =>
+                                              'default_image_path.png',
+                                        )
+                                      : 'default_image_path.png', // Use a default image path if imageIcons is empty
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.1,
+                                  fit: BoxFit.fill,
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  skill,
                                   style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 18,
                                       color: Theme.of(context)
                                           .colorScheme
-                                          .primary),
+                                          .onBackground),
                                 ),
-                              ),
-                            ],
+                                const SizedBox(height: 10),
+                                Expanded(
+                                  child: Text(
+                                    technicalSkills[skill]!,
+                                    maxLines: 4,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );

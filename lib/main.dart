@@ -52,7 +52,7 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
   late PageController _pageController;
-  int _currentPageIndex = 1;
+  int _currentPageIndex = 4;
 
   List<String> pagesName = [
     'Home',
@@ -76,7 +76,10 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
     );
     _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
 
-    _pageController = PageController(initialPage: 1, keepPage: true);
+    _pageController = PageController(
+      initialPage: 4,
+      keepPage: true,
+    );
     _pageController.addListener(() {
       setState(() {
         _currentPageIndex = _pageController.page!.round();
@@ -156,90 +159,104 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
         actions: [
           if (MediaQuery.sizeOf(context).width > 600)
             for (int i = 0; i < pages.length; i++)
-              MouseRegion(
-                onEnter: (event) {
+              GestureDetector(
+                onTap: () {
                   setState(() {
-                    hoveringStates[i] = true;
+                    _currentPageIndex = i;
+                    _pageController.animateToPage(
+                      i,
+                      duration: const Duration(milliseconds: 2000),
+                      //curve: Curves.easeInOut,
+                      curve: Curves.ease,
+                    );
+                    _animationController.reverse();
                   });
                 },
-                onExit: (event) {
-                  setState(() {
-                    hoveringStates[i] = false;
-                  });
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.08,
-                  height: MediaQuery.of(context).size.height * 0.05,
-                  margin: const EdgeInsets.only(right: 5),
-                  decoration: BoxDecoration(
-                    border: MediaQuery.sizeOf(context).width < 600
-                        ? null
-                        : Border(
-                            bottom: BorderSide(
-                              color: hoveringStates[i]
-                                  ? Colors.blue
-                                  : const Color.fromARGB(255, 194, 61, 0),
-                              width: hoveringStates[i] || i == _currentPageIndex
-                                  ? 4
-                                  : 0.5,
-                            ),
-                          ),
-                  ),
-                  child: Center(
-                    child: MediaQuery.of(context).size.width < 600
-                        ? makeIcon(i)
-                        : i == _currentPageIndex
-                            ? AnimatedTextKit(
-                                animatedTexts: [
-                                  WavyAnimatedText(
-                                    pagesName[i],
-                                    textStyle: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              0.011,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .tertiary,
-                                    ),
-                                  ),
-                                ],
-                                totalRepeatCount: 100,
-                                onTap: () {
-                                  setState(() {
-                                    _currentPageIndex = i;
-                                    _pageController.animateToPage(
-                                      i,
-                                      duration:
-                                          const Duration(milliseconds: 2000),
-                                      //curve: Curves.easeInOut,
-                                      curve: Curves.ease,
-                                    );
-                                    _animationController.reverse();
-                                  });
-                                },
-                              )
-                            : GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _currentPageIndex = i;
-                                    _pageController.animateToPage(
-                                      i,
-                                      duration:
-                                          const Duration(milliseconds: 2000),
-                                      //curve: Curves.easeInOut,
-                                      curve: Curves.ease,
-                                    );
-                                    _animationController.reverse();
-                                  });
-                                },
-                                child: Text(pagesName[i],
-                                    style: TextStyle(
-                                      fontSize:
-                                          MediaQuery.of(context).size.width *
-                                              0.009,
-                                    )),
+                child: MouseRegion(
+                  onEnter: (event) {
+                    setState(() {
+                      hoveringStates[i] = true;
+                    });
+                  },
+                  onExit: (event) {
+                    setState(() {
+                      hoveringStates[i] = false;
+                    });
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.08,
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    margin: const EdgeInsets.only(right: 5),
+                    decoration: BoxDecoration(
+                      border: MediaQuery.sizeOf(context).width < 600
+                          ? null
+                          : Border(
+                              bottom: BorderSide(
+                                color: hoveringStates[i]
+                                    ? Colors.blue
+                                    : const Color.fromARGB(255, 194, 61, 0),
+                                width:
+                                    hoveringStates[i] || i == _currentPageIndex
+                                        ? 4
+                                        : 0.5,
                               ),
+                            ),
+                    ),
+                    child: Center(
+                      child: MediaQuery.of(context).size.width < 600
+                          ? makeIcon(i)
+                          : i == _currentPageIndex
+                              ? AnimatedTextKit(
+                                  animatedTexts: [
+                                    WavyAnimatedText(
+                                      pagesName[i],
+                                      textStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        //fontSize: MediaQuery.of(context).size.width * 0.011,
+                                        fontSize: 20,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .tertiary,
+                                      ),
+                                    ),
+                                  ],
+                                  totalRepeatCount: 50000,
+                                  onTap: () {
+                                    setState(() {
+                                      _currentPageIndex = i;
+                                      _pageController.animateToPage(
+                                        i,
+                                        duration:
+                                            const Duration(milliseconds: 2000),
+                                        //curve: Curves.easeInOut,
+                                        curve: Curves.ease,
+                                      );
+                                      _animationController.reverse();
+                                    });
+                                  },
+                                )
+                              : GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      _currentPageIndex = i;
+                                      _pageController.animateToPage(
+                                        i,
+                                        duration:
+                                            const Duration(milliseconds: 2000),
+                                        //curve: Curves.easeInOut,
+                                        curve: Curves.ease,
+                                      );
+                                      _animationController.reverse();
+                                    });
+                                  },
+                                  child: Text(
+                                    pagesName[i],
+                                    style: TextStyle(
+                                        //fontSize: MediaQuery.of(context).size.width *0.009,
+                                        fontSize: 17),
+                                  ),
+                                ),
+                    ),
                   ),
                 ),
               )

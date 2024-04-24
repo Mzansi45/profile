@@ -42,7 +42,8 @@ class _ContactState extends State<Contact> {
             Text(
               "Get in touch with me",
               style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.04,
+                  //fontSize: MediaQuery.of(context).size.width * 0.04,
+                  fontSize: 60,
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).colorScheme.tertiary),
             ),
@@ -53,7 +54,8 @@ class _ContactState extends State<Contact> {
             Text(
                 'I am always open to discuss new projects, creative ideas or opportunities to be part of your visions. Feel free to contact me.',
                 style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.015,
+                    //fontSize: MediaQuery.of(context).size.width * 0.015,
+                    fontSize: 30,
                     color: Colors.white)),
 
             SizedBox(height: MediaQuery.of(context).size.width * 0.01),
@@ -83,8 +85,8 @@ class _ContactState extends State<Contact> {
                             MediaQuery.of(context).size.width * 0.01),
                         child: Text("AVAILABLE 24/7",
                             style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.012,
+                                //fontSize: MediaQuery.of(context).size.width * 0.012,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: Theme.of(context).colorScheme.tertiary)),
                       ),
@@ -108,9 +110,8 @@ class _ContactState extends State<Contact> {
                             label: Text("Enter name",
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize:
-                                        MediaQuery.of(context).size.width *
-                                            0.01)),
+                                    //fontSize:MediaQuery.of(context).size.width *  0.01
+                                    fontSize: 18)),
                           ),
                           style: TextStyle(
                               color: Theme.of(context).colorScheme.onSurface),
@@ -133,9 +134,8 @@ class _ContactState extends State<Contact> {
                             label: Text("Enter email",
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize:
-                                        MediaQuery.of(context).size.width *
-                                            0.01)),
+                                    //fontSize:MediaQuery.of(context).size.width *0.01
+                                    fontSize: 18)),
                           ),
                           style: TextStyle(
                               color: Theme.of(context).colorScheme.onSurface),
@@ -162,9 +162,8 @@ class _ContactState extends State<Contact> {
                             label: Text("Message",
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize:
-                                        MediaQuery.of(context).size.width *
-                                            0.01)),
+                                    //fontSize:MediaQuery.of(context).size.width *0.01
+                                    fontSize: 18)),
                             alignLabelWithHint: true,
                           ),
                           style: TextStyle(
@@ -216,8 +215,8 @@ class _ContactState extends State<Contact> {
                       ListTile(
                         title: Text("Location",
                             style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.012,
+                                //fontSize:MediaQuery.of(context).size.width * 0.012,
+                                fontSize: 22,
                                 fontWeight: FontWeight.bold,
                                 color: Theme.of(context).colorScheme.tertiary)),
                         subtitle: Column(
@@ -234,7 +233,8 @@ class _ContactState extends State<Contact> {
                           ],
                         ),
                         leading: Icon(Icons.location_on_outlined,
-                            size: MediaQuery.of(context).size.width * 0.015,
+                            //size: MediaQuery.of(context).size.width * 0.015,
+                            size: 20,
                             color: const Color.fromARGB(255, 4, 143, 223)),
                       ),
 
@@ -242,8 +242,8 @@ class _ContactState extends State<Contact> {
                       ListTile(
                         title: Text("Phone",
                             style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.012,
+                                //fontSize: MediaQuery.of(context).size.width * 0.012,
+                                fontSize: 22,
                                 fontWeight: FontWeight.bold,
                                 color: Theme.of(context).colorScheme.tertiary)),
                         subtitle: Column(
@@ -260,7 +260,8 @@ class _ContactState extends State<Contact> {
                           ],
                         ),
                         leading: Icon(Icons.phone_outlined,
-                            size: MediaQuery.of(context).size.width * 0.015,
+                            //size: MediaQuery.of(context).size.width * 0.015,
+                            size: 20,
                             color: const Color.fromARGB(255, 4, 143, 223)),
                       ),
 
@@ -269,8 +270,8 @@ class _ContactState extends State<Contact> {
                       ListTile(
                         title: Text("Email",
                             style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.012,
+                                //fontSize: MediaQuery.of(context).size.width * 0.012,
+                                fontSize: 22,
                                 fontWeight: FontWeight.bold,
                                 color: Theme.of(context).colorScheme.tertiary)),
                         subtitle: Column(
@@ -288,7 +289,8 @@ class _ContactState extends State<Contact> {
                           ],
                         ),
                         leading: Icon(Icons.mail_outline,
-                            size: MediaQuery.of(context).size.width * 0.015,
+                            //size: MediaQuery.of(context).size.width * 0.015,
+                            size: 20,
                             color: const Color.fromARGB(255, 4, 143, 223)),
                       ),
 
@@ -304,7 +306,8 @@ class _ContactState extends State<Contact> {
                               icon: FaIcon(
                                 FontAwesomeIcons.xTwitter,
                                 color: Colors.grey,
-                                size: MediaQuery.of(context).size.width * 0.018,
+                                //size: MediaQuery.of(context).size.width * 0.018,
+                                size: 25,
                               ).animate().scale(
                                   begin: Offset(0, 0),
                                   end: Offset(1, 1),
@@ -318,7 +321,8 @@ class _ContactState extends State<Contact> {
                             icon: FaIcon(
                               FontAwesomeIcons.github,
                               color: Colors.grey,
-                              size: MediaQuery.of(context).size.width * 0.018,
+                              //size: MediaQuery.of(context).size.width * 0.018,
+                              size: 25,
                             ).animate().scale(
                                 begin: Offset(0, 0),
                                 end: Offset(1, 1),
@@ -334,7 +338,8 @@ class _ContactState extends State<Contact> {
                               icon: FaIcon(
                                 FontAwesomeIcons.linkedin,
                                 color: Colors.blue[700],
-                                size: MediaQuery.of(context).size.width * 0.018,
+                                //size: MediaQuery.of(context).size.width * 0.018,
+                                size: 25,
                               ).animate().scale(
                                   begin: Offset(0, 0),
                                   end: Offset(1, 1),
@@ -349,7 +354,8 @@ class _ContactState extends State<Contact> {
                               icon: FaIcon(
                                 FontAwesomeIcons.whatsapp,
                                 color: Colors.green[700],
-                                size: MediaQuery.of(context).size.width * 0.018,
+                                //size: MediaQuery.of(context).size.width * 0.018,
+                                size: 25,
                               ).animate().scale(
                                   begin: Offset(0, 0),
                                   end: Offset(1, 1),
