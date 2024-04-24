@@ -233,7 +233,7 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
                                     _animationController.reverse();
                                   });
                                 },
-                                child: Text(pages[i].toString(),
+                                child: Text(pagesName[i],
                                     style: TextStyle(
                                       fontSize:
                                           MediaQuery.of(context).size.width *
