@@ -51,12 +51,17 @@ class _ContactState extends State<Contact> {
             SizedBox(height: MediaQuery.of(context).size.width * 0.01),
 
             //Sub heading text
-            Text(
-                'I am always open to discuss new projects, creative ideas or opportunities to be part of your visions. Feel free to contact me.',
-                style: TextStyle(
-                    //fontSize: MediaQuery.of(context).size.width * 0.015,
-                    fontSize: 30,
-                    color: Colors.white)),
+            Container(
+              margin: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.05,
+                  right: MediaQuery.of(context).size.width * 0.05),
+              child: const Text(
+                  'I am always open to discuss new projects, creative ideas or opportunities to be part of your visions. Feel free to contact me.',
+                  style: TextStyle(
+                      //fontSize: MediaQuery.of(context).size.width * 0.015,
+                      fontSize: 22,
+                      color: Colors.white)),
+            ),
 
             SizedBox(height: MediaQuery.of(context).size.width * 0.01),
 
@@ -68,7 +73,9 @@ class _ContactState extends State<Contact> {
                 // send message form
                 Container(
                   width: MediaQuery.of(context).size.width * 0.4,
-                  height: MediaQuery.of(context).size.height * 0.5,
+                  //height: MediaQuery.of(context).size.height * 0.5,
+                  constraints: BoxConstraints(
+                      minHeight: MediaQuery.of(context).size.height * 0.6),
                   margin:
                       EdgeInsets.all(MediaQuery.of(context).size.width * 0.01),
                   decoration: BoxDecoration(
@@ -102,12 +109,12 @@ class _ContactState extends State<Contact> {
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(3)),
+                                  const BorderRadius.all(Radius.circular(3)),
                               borderSide: BorderSide(
                                   color:
                                       Theme.of(context).colorScheme.tertiary),
                             ),
-                            label: Text("Enter name",
+                            label: const Text("Enter name",
                                 style: TextStyle(
                                     color: Colors.white,
                                     //fontSize:MediaQuery.of(context).size.width *  0.01
@@ -126,8 +133,8 @@ class _ContactState extends State<Contact> {
                             bottom: MediaQuery.of(context).size.width * 0.003,
                             top: MediaQuery.of(context).size.width * 0.003),
                         child: TextFormField(
-                          decoration: InputDecoration(
-                            border: const OutlineInputBorder(
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(3)),
                             ),
@@ -154,12 +161,12 @@ class _ContactState extends State<Contact> {
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(3)),
+                                  const BorderRadius.all(Radius.circular(3)),
                               borderSide: BorderSide(
                                   color:
                                       Theme.of(context).colorScheme.tertiary),
                             ),
-                            label: Text("Message",
+                            label: const Text("Message",
                                 style: TextStyle(
                                     color: Colors.white,
                                     //fontSize:MediaQuery.of(context).size.width *0.01
@@ -201,7 +208,9 @@ class _ContactState extends State<Contact> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.2,
-                  height: MediaQuery.of(context).size.height * 0.5,
+                  //height: MediaQuery.of(context).size.height * 0.5,
+                  constraints: BoxConstraints(
+                      minHeight: MediaQuery.of(context).size.height * 0.6),
                   margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       border: Border.all(
@@ -232,10 +241,10 @@ class _ContactState extends State<Contact> {
                                 thickness: 2),
                           ],
                         ),
-                        leading: Icon(Icons.location_on_outlined,
+                        leading: const Icon(Icons.location_on_outlined,
                             //size: MediaQuery.of(context).size.width * 0.015,
                             size: 20,
-                            color: const Color.fromARGB(255, 4, 143, 223)),
+                            color: Color.fromARGB(255, 4, 143, 223)),
                       ),
 
                       // Phone
@@ -259,10 +268,10 @@ class _ContactState extends State<Contact> {
                                 thickness: 2),
                           ],
                         ),
-                        leading: Icon(Icons.phone_outlined,
+                        leading: const Icon(Icons.phone_outlined,
                             //size: MediaQuery.of(context).size.width * 0.015,
                             size: 20,
-                            color: const Color.fromARGB(255, 4, 143, 223)),
+                            color: Color.fromARGB(255, 4, 143, 223)),
                       ),
 
                       // Email
@@ -288,10 +297,10 @@ class _ContactState extends State<Contact> {
                                 thickness: 2),
                           ],
                         ),
-                        leading: Icon(Icons.mail_outline,
+                        leading: const Icon(Icons.mail_outline,
                             //size: MediaQuery.of(context).size.width * 0.015,
                             size: 20,
-                            color: const Color.fromARGB(255, 4, 143, 223)),
+                            color: Color.fromARGB(255, 4, 143, 223)),
                       ),
 
                       // socials (X, Github, LinkedIn, Whatsapp)
@@ -303,7 +312,7 @@ class _ContactState extends State<Contact> {
                                 // open twitter
                                 _launchUrl("https://twitter.com/t_gulube");
                               },
-                              icon: FaIcon(
+                              icon: const FaIcon(
                                 FontAwesomeIcons.xTwitter,
                                 color: Colors.grey,
                                 //size: MediaQuery.of(context).size.width * 0.018,
@@ -318,7 +327,7 @@ class _ContactState extends State<Contact> {
                               // open github
                               _launchUrl('https://github.com/mzansi45');
                             },
-                            icon: FaIcon(
+                            icon: const FaIcon(
                               FontAwesomeIcons.github,
                               color: Colors.grey,
                               //size: MediaQuery.of(context).size.width * 0.018,
@@ -341,9 +350,9 @@ class _ContactState extends State<Contact> {
                                 //size: MediaQuery.of(context).size.width * 0.018,
                                 size: 25,
                               ).animate().scale(
-                                  begin: Offset(0, 0),
-                                  end: Offset(1, 1),
-                                  duration: Duration(seconds: 3),
+                                  begin: const Offset(0, 0),
+                                  end: const Offset(1, 1),
+                                  duration: const Duration(seconds: 3),
                                   curve: Curves.easeInOut)),
                           IconButton(
                               onPressed: () {
@@ -357,9 +366,9 @@ class _ContactState extends State<Contact> {
                                 //size: MediaQuery.of(context).size.width * 0.018,
                                 size: 25,
                               ).animate().scale(
-                                  begin: Offset(0, 0),
-                                  end: Offset(1, 1),
-                                  duration: Duration(seconds: 3),
+                                  begin: const Offset(0, 0),
+                                  end: const Offset(1, 1),
+                                  duration: const Duration(seconds: 3),
                                   curve: Curves.easeInOut)),
                         ],
                       ),

@@ -52,13 +52,13 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
   late PageController _pageController;
-  int _currentPageIndex = 4;
+  int _currentPageIndex = 2;
 
   List<String> pagesName = [
     'Home',
     'About',
     'Experience',
-    'Service',
+    'Services',
     'Contact',
   ];
 
@@ -77,7 +77,7 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
     _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
 
     _pageController = PageController(
-      initialPage: 4,
+      initialPage: 2,
       keepPage: true,
     );
     _pageController.addListener(() {

@@ -104,7 +104,7 @@ class _AboutState extends State<About> {
                   for (var skill in softSkills.keys)
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.3,
-                      height: MediaQuery.sizeOf(context).height * 0.1,
+                      //height: MediaQuery.sizeOf(context).height * 0.1,
                       color: Theme.of(context).colorScheme.secondary,
                       margin: EdgeInsets.all(5),
                       padding: EdgeInsets.all(5),
@@ -206,60 +206,69 @@ class _AboutState extends State<About> {
                             });
                           }
                         },
-                        child: SingleChildScrollView(
-                          child: Container(
-                            padding: const EdgeInsets.all(20),
-                            margin: const EdgeInsets.all(5),
-                            height: MediaQuery.of(context).size.height * 0.255,
-                            width: MediaQuery.of(context).size.width * 0.18,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Theme.of(context).colorScheme.tertiary,
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(2),
+                        child: Container(
+                          padding: const EdgeInsets.all(20),
+                          margin: const EdgeInsets.all(5),
+                          //height: MediaQuery.of(context).size.height * 0.255,
+                          width: MediaQuery.of(context).size.width * 0.18,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Theme.of(context).colorScheme.tertiary,
+                              width: 2,
                             ),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  // Check if imageIcons is not empty before using firstWhere
-                                  imageIcons.isNotEmpty
-                                      ? imageIcons.firstWhere(
-                                          (element) => element
-                                              .contains(skill.toLowerCase()),
-                                          // Provide a default value in case no matching element is found
-                                          orElse: () =>
-                                              'default_image_path.png',
-                                        )
-                                      : 'default_image_path.png', // Use a default image path if imageIcons is empty
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.1,
-                                  fit: BoxFit.fill,
-                                ),
-                                const SizedBox(height: 10),
-                                Text(
-                                  skill,
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onBackground),
-                                ),
-                                const SizedBox(height: 10),
-                                Expanded(
-                                  child: Text(
-                                    technicalSkills[skill]!,
-                                    maxLines: 4,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary),
+                            borderRadius: BorderRadius.circular(2),
+                          ),
+                          child: Wrap(
+                            children: [
+                              Center(
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                      bottom:
+                                          MediaQuery.of(context).size.height *
+                                              0.01,
+                                      top: MediaQuery.of(context).size.height *
+                                          0.01,
+                                      left: MediaQuery.of(context).size.width *
+                                          0.01,
+                                      right: MediaQuery.of(context).size.width *
+                                          0.01),
+                                  child: Image.asset(
+                                    // Check if imageIcons is not empty before using firstWhere
+                                    imageIcons.isNotEmpty
+                                        ? imageIcons.firstWhere(
+                                            (element) => element
+                                                .contains(skill.toLowerCase()),
+                                            // Provide a default value in case no matching element is found
+                                            orElse: () =>
+                                                'default_image_path.png',
+                                          )
+                                        : 'default_image_path.png', // Use a default image path if imageIcons is empty
+                                    height: MediaQuery.of(context).size.height *
+                                        0.1,
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                              //const SizedBox(height: 10),
+                              /*Text(
+                                skill,
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onBackground),
+                              ),*/
+                              const SizedBox(height: 10),
+                              Text(
+                                technicalSkills[skill]!,
+                                maxLines: 6,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                              ),
+                            ],
                           ),
                         ),
                       );
