@@ -29,12 +29,12 @@ class _ContactState extends State<Contact> {
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
+          /*decoration: const BoxDecoration(
             image: DecorationImage(
                 image: NetworkImage(
                     "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"),
                 fit: BoxFit.fill),
-          ),
+          ),*/
           child: SingleChildScrollView(
               child: Column(children: [
             SizedBox(height: MediaQuery.of(context).size.height * 0.06),
@@ -50,9 +50,11 @@ class _ContactState extends State<Contact> {
             SizedBox(height: MediaQuery.of(context).size.width * 0.01),
 
             //Sub heading text
-            const Text(
+            Text(
                 'I am always open to discuss new projects, creative ideas or opportunities to be part of your visions. Feel free to contact me.',
-                style: TextStyle(fontSize: 20, color: Colors.white)),
+                style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.width * 0.015,
+                    color: Colors.white)),
 
             SizedBox(height: MediaQuery.of(context).size.width * 0.01),
 
@@ -217,7 +219,7 @@ class _ContactState extends State<Contact> {
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.012,
                                 fontWeight: FontWeight.bold,
-                                color: Theme.of(context).colorScheme.primary)),
+                                color: Theme.of(context).colorScheme.tertiary)),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -232,8 +234,8 @@ class _ContactState extends State<Contact> {
                           ],
                         ),
                         leading: Icon(Icons.location_on_outlined,
-                            size: MediaQuery.of(context).size.width * 0.018,
-                            color: Colors.white60),
+                            size: MediaQuery.of(context).size.width * 0.015,
+                            color: const Color.fromARGB(255, 4, 143, 223)),
                       ),
 
                       // Phone
@@ -243,7 +245,7 @@ class _ContactState extends State<Contact> {
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.012,
                                 fontWeight: FontWeight.bold,
-                                color: Theme.of(context).colorScheme.primary)),
+                                color: Theme.of(context).colorScheme.tertiary)),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -258,8 +260,8 @@ class _ContactState extends State<Contact> {
                           ],
                         ),
                         leading: Icon(Icons.phone_outlined,
-                            size: MediaQuery.of(context).size.width * 0.018,
-                            color: Colors.white60),
+                            size: MediaQuery.of(context).size.width * 0.015,
+                            color: const Color.fromARGB(255, 4, 143, 223)),
                       ),
 
                       // Email
@@ -270,7 +272,7 @@ class _ContactState extends State<Contact> {
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.012,
                                 fontWeight: FontWeight.bold,
-                                color: Theme.of(context).colorScheme.primary)),
+                                color: Theme.of(context).colorScheme.tertiary)),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -286,8 +288,8 @@ class _ContactState extends State<Contact> {
                           ],
                         ),
                         leading: Icon(Icons.mail_outline,
-                            size: MediaQuery.of(context).size.width * 0.018,
-                            color: Colors.white60),
+                            size: MediaQuery.of(context).size.width * 0.015,
+                            color: const Color.fromARGB(255, 4, 143, 223)),
                       ),
 
                       // socials (X, Github, LinkedIn, Whatsapp)
@@ -301,7 +303,7 @@ class _ContactState extends State<Contact> {
                               },
                               icon: FaIcon(
                                 FontAwesomeIcons.xTwitter,
-                                color: Colors.black,
+                                color: Colors.grey,
                                 size: MediaQuery.of(context).size.width * 0.018,
                               ).animate().scale(
                                   begin: Offset(0, 0),
@@ -315,7 +317,7 @@ class _ContactState extends State<Contact> {
                             },
                             icon: FaIcon(
                               FontAwesomeIcons.github,
-                              color: Colors.black,
+                              color: Colors.grey,
                               size: MediaQuery.of(context).size.width * 0.018,
                             ).animate().scale(
                                 begin: Offset(0, 0),

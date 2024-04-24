@@ -54,16 +54,16 @@ class _HomeState extends State<Home> {
                     // Hello, I'm
                     Row(
                       children: [
-                        const Text(
+                        Text(
                           'Hello',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: MediaQuery.of(context).size.width * 0.016,
                           ),
                         ),
                         Text(
                           ', I\'m',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: MediaQuery.of(context).size.width * 0.016,
                             color: Colors.grey[850],
                           ),
                         ),
@@ -74,30 +74,31 @@ class _HomeState extends State<Home> {
                         height: MediaQuery.of(context).size.height * 0.004),
 
                     // Thulani Gulube
-                    const Row(
+                    Row(
                       children: [
                         Text(
                           'Thulani Gulube',
                           textAlign: TextAlign.start,
                           style: TextStyle(
-                            fontSize: 35,
+                            fontSize: MediaQuery.of(context).size.width * 0.02,
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 194, 61, 0),
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                       ],
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
                     // Software Engineer/Developer | Software Architect
-                    const Row(
+                    Row(
                       children: [
                         Expanded(
                           child: Text(
                             'Software Engineer/Developer | Software Architect',
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize:
+                                  MediaQuery.of(context).size.width * 0.016,
                             ),
                           ),
                         ),
@@ -119,6 +120,8 @@ class _HomeState extends State<Home> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   color: Colors.grey[850],
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * 0.01,
                                 ),
                               ),
                             ],
@@ -179,7 +182,7 @@ class _HomeState extends State<Home> {
                     // Social Media Icons
                     Row(
                       children: [
-                        Text('Socials',
+                        Text('Socials:   ',
                             style: TextStyle(
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.016)),
@@ -274,75 +277,93 @@ class _HomeState extends State<Home> {
                               fontSize: 30.0,
                               fontFamily: 'Agne',
                             ),
-                            child: AnimatedTextKit(
-                              animatedTexts: [
-                                //Java
-                                TypewriterAnimatedText(
-                                  'public class HelloWorld { \n\n  public static void main(String[] args) { \n         System.out.println("Hello, World!"); \n  } \n\n}',
-                                  speed: const Duration(milliseconds: 100),
-                                  textStyle: const TextStyle(
-                                      //color: Color.fromARGB(255, 194, 61, 0), fontSize: 18),
-                                      color: Color.fromARGB(255, 0, 94, 5),
-                                      fontSize: 18),
-                                ),
+                            child: SingleChildScrollView(
+                              //autoscroll
+                              child: AnimatedTextKit(
+                                animatedTexts: [
+                                  //Java
+                                  TypewriterAnimatedText(
+                                    'public class HelloWorld { \n\n  public static void main(String[] args) { \n         System.out.println("Hello, World!"); \n  } \n\n}',
+                                    speed: const Duration(milliseconds: 100),
+                                    textStyle: TextStyle(
+                                        //color: Color.fromARGB(255, 194, 61, 0), fontSize: 18),
+                                        color: Color.fromARGB(255, 0, 94, 5),
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                0.014),
+                                  ),
 
-                                //Python
-                                TypewriterAnimatedText(
-                                  'print("Hello, World!")',
-                                  speed: const Duration(milliseconds: 100),
-                                  textStyle: const TextStyle(
-                                      color: Color.fromARGB(255, 0, 94, 5),
-                                      fontSize: 18),
-                                ),
+                                  //Python
+                                  TypewriterAnimatedText(
+                                    'print("Hello, World!")',
+                                    speed: const Duration(milliseconds: 100),
+                                    textStyle: TextStyle(
+                                        //color: Color.fromARGB(255, 194, 61, 0), fontSize: 18),
+                                        color: Color.fromARGB(255, 0, 94, 5),
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                0.014),
+                                  ),
 
-                                //JavaScript
-                                TypewriterAnimatedText(
-                                  'console.log("Hello, World!");',
-                                  speed: const Duration(milliseconds: 100),
-                                  textStyle: const TextStyle(
-                                      color: Color.fromARGB(255, 0, 94, 5),
-                                      fontSize: 18),
-                                ),
+                                  //JavaScript
+                                  TypewriterAnimatedText(
+                                    'console.log("Hello, World!");',
+                                    speed: const Duration(milliseconds: 100),
+                                    textStyle: TextStyle(
+                                        //color: Color.fromARGB(255, 194, 61, 0), fontSize: 18),
+                                        color: Color.fromARGB(255, 0, 94, 5),
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                0.014),
+                                  ),
 
-                                //C#
-                                TypewriterAnimatedText(
-                                  'using System; \n\nnamespace HelloWorld { \n\n  class Program { \n\n    static void Main(string[] args) { \n\n      Console.WriteLine("Hello, World!"); \n\n    } \n\n  } \n\n}',
-                                  speed: const Duration(milliseconds: 100),
-                                  textStyle: const TextStyle(
-                                      color: Color.fromARGB(255, 0, 94, 5),
-                                      fontSize: 18),
-                                ),
+                                  //C#
+                                  TypewriterAnimatedText(
+                                    'using System; \n\nnamespace HelloWorld { \n\n  class Program { \n\n    static void Main(string[] args) { \n\n      Console.WriteLine("Hello, World!"); \n\n    } \n\n  } \n\n}',
+                                    speed: const Duration(milliseconds: 100),
+                                    textStyle: TextStyle(
+                                        //color: Color.fromARGB(255, 194, 61, 0), fontSize: 18),
+                                        color: Color.fromARGB(255, 0, 94, 5),
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                0.014),
+                                  ),
 
-                                //C++
-                                TypewriterAnimatedText(
-                                  '#include <iostream> \n\nint main() { \n\n  std::cout << "Hello, World!"; \n\n  return 0; \n\n}',
-                                  speed: const Duration(milliseconds: 100),
-                                  textStyle: const TextStyle(
-                                      color: Color.fromARGB(255, 0, 94, 5),
-                                      fontSize: 18),
-                                ),
+                                  //C++
+                                  TypewriterAnimatedText(
+                                    '#include <iostream> \n\nint main() { \n\n  std::cout << "Hello, World!"; \n\n  return 0; \n\n}',
+                                    speed: const Duration(milliseconds: 100),
+                                    textStyle: TextStyle(
+                                        //color: Color.fromARGB(255, 194, 61, 0), fontSize: 18),
+                                        color: Color.fromARGB(255, 0, 94, 5),
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                0.014),
+                                  ),
 
-                                //Assembly
-                                TypewriterAnimatedText(
-                                  '.section .data \n\n.section .text \n\n.global _start \n\n_start: \n\n  movl \$4, %eax \n\n  movl \$1, %ebx \n\n  movl \$message, %ecx \n\n  movl \$13, %edx \n\n  int \$0x80 \n\n  movl \$1, %eax \n\n  movl \$0, %ebx \n\n  int \$0x80 \n\n.section .data \n\nmessage: \n\n  .ascii "Hello, World!\\n"',
-                                  speed: const Duration(milliseconds: 100),
-                                  textStyle: const TextStyle(
-                                      color: Color.fromARGB(255, 0, 94, 5),
-                                      fontSize: 18),
-                                ),
+                                  //Assembly
+                                  TypewriterAnimatedText(
+                                    '.section .data \n\nmessage: \n\n    .ascii "Hello, World!" \n\n \n\n.section .text\n\n.global _start \n\n_start: \n\n    mov rax, 1 \n\n    mov rdi, 1 \n\n    mov rsi, message \n\n    mov rdx, 14 \n\n    syscall \n\n    mov rax, 60 \n\n    mov rdi, 0 \n\n    syscall \n\n',
+                                    speed: const Duration(milliseconds: 100),
+                                    textStyle: TextStyle(
+                                        //color: Color.fromARGB(255, 194, 61, 0), fontSize: 18),
+                                        color: Color.fromARGB(255, 0, 94, 5),
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                0.014),
+                                  ),
 
-                                //html,css
-                                TypewriterAnimatedText(
-                                  '<!DOCTYPE html> \n\n<html> \n\n  <head> \n\n    <title>Hello, World!</title> \n\n  </head> \n\n  <body> \n\n    <h1>Hello, World!</h1> \n\n  </body> \n\n</html>',
-                                  speed: const Duration(milliseconds: 100),
-                                  textStyle: const TextStyle(
-                                      color: Color.fromARGB(255, 0, 94, 5),
-                                      fontSize: 18),
-                                ),
-                              ],
-                              onTap: () {
-                                //get current language
-                              },
+                                  //html,css
+                                  TypewriterAnimatedText(
+                                    '<!DOCTYPE html> \n\n<html> \n\n  <head> \n\n    <title>Hello, World!</title> \n\n  </head> \n\n  <body> \n\n    <h1>Hello, World!</h1> \n\n  </body> \n\n</html>',
+                                    speed: const Duration(milliseconds: 100),
+                                    textStyle: const TextStyle(
+                                        color: Color.fromARGB(255, 0, 94, 5),
+                                        fontSize: 18),
+                                  ),
+                                ],
+                                onTap: () {},
+                              ),
                             ),
                           ),
                         ),

@@ -52,7 +52,15 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
   late PageController _pageController;
-  int _currentPageIndex = 4;
+  int _currentPageIndex = 1;
+
+  List<String> pagesName = [
+    'Home',
+    'About',
+    'Experience',
+    'Service',
+    'Contact',
+  ];
 
   @override
   void initState() {
@@ -68,7 +76,7 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
     );
     _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
 
-    _pageController = PageController(initialPage: 4, keepPage: true);
+    _pageController = PageController(initialPage: 1, keepPage: true);
     _pageController.addListener(() {
       setState(() {
         _currentPageIndex = _pageController.page!.round();
@@ -142,7 +150,7 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(pages[_currentPageIndex].toString(),
+        title: Text(pagesName[_currentPageIndex],
             style: const TextStyle(color: Colors.white)),
         toolbarHeight: MediaQuery.of(context).size.height * 0.07,
         actions: [
@@ -184,9 +192,15 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
                             ? AnimatedTextKit(
                                 animatedTexts: [
                                   WavyAnimatedText(
-                                    pages[i].toString(),
-                                    textStyle: const TextStyle(
+                                    pagesName[i],
+                                    textStyle: TextStyle(
                                       fontWeight: FontWeight.bold,
+                                      fontSize:
+                                          MediaQuery.of(context).size.width *
+                                              0.011,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .tertiary,
                                     ),
                                   ),
                                 ],
@@ -219,9 +233,12 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
                                     _animationController.reverse();
                                   });
                                 },
-                                child: Text(
-                                  pages[i].toString(),
-                                ),
+                                child: Text(pages[i].toString(),
+                                    style: TextStyle(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width *
+                                              0.009,
+                                    )),
                               ),
                   ),
                 ),
