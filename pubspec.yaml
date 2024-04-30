@@ -42,6 +42,7 @@ dependencies:
   comment_tree: ^0.3.0
   flutter_animate: ^4.5.0
   timeline_tile: ^2.0.0
+  lottie: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +81,7 @@ flutter:
     - assets\icons\unity.png
     - assets\icons\web_dev.png
     - assets\icons\sql.png
+    - assets\images\software.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
