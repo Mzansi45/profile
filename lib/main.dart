@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:floating_action_bubble_custom/floating_action_bubble_custom.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:profile/pages/about.dart';
 import 'package:profile/pages/contact.dart';
 import 'package:profile/pages/experience.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Portfolio',
       theme: ThemeData(
         colorScheme: ColorScheme(
           background: Colors.black,
@@ -34,7 +35,11 @@ class MyApp extends StatelessWidget {
           tertiary: const Color.fromARGB(255, 194, 61, 0),
         ),
       ),
-      home: const Main(),
+      //home: const Main(),
+      home: MediaQuery.sizeOf(context).width > 1000
+          ? const Main()
+          : Lottie.network(
+              'https://lottie.host/a10e0cc9-f344-458d-abb8-b9f4dfc845de/uhW12fwjKH.json', fit: BoxFit.fill),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -52,7 +57,7 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
   late PageController _pageController;
-  int _currentPageIndex = 3;
+  int _currentPageIndex = 0;
 
   List<String> pagesName = [
     'Home',
@@ -77,7 +82,7 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
     _animation = Tween<double>(begin: 0, end: 1).animate(curvedAnimation);
 
     _pageController = PageController(
-      initialPage: 3,
+      initialPage: 0,
       keepPage: true,
     );
     _pageController.addListener(() {

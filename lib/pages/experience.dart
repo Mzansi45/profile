@@ -371,7 +371,7 @@ class _ExperienceState extends State<Experience>
 
             //segmented control (prev, Name of current project, next)
             Container(
-              width: MediaQuery.of(context).size.width * 0.54,
+              width: MediaQuery.of(context).size.width * 0.5,
               child: Column(
                 children: [
                   Row(

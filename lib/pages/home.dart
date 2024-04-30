@@ -27,8 +27,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    if (MediaQuery.of(context).size.width > 600) {
-      return Wrap(
+    return Center(
+      child: Row(
         children: [
           SizedBox(
             //color: Colors.blueAccent,
@@ -37,11 +37,11 @@ class _HomeState extends State<Home> {
             child: Center(
               child: Container(
                 /*decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 2,
-                  ),
-                ),*/
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 2,
+                    ),
+                  ),*/
                 margin: EdgeInsets.only(
                   left: MediaQuery.of(context).size.width * 0.05,
                   //right: MediaQuery.of(context).size.width * 0.05,
@@ -57,13 +57,15 @@ class _HomeState extends State<Home> {
                         Text(
                           'Hello',
                           style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.016,
+                            //fontSize: MediaQuery.of(context).size.width * 0.016,
+                            fontSize: 25,
                           ),
                         ),
                         Text(
                           ', I\'m',
                           style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.016,
+                            //fontSize: MediaQuery.of(context).size.width * 0.016,
+                            fontSize: 25,
                             color: Colors.grey[850],
                           ),
                         ),
@@ -80,7 +82,8 @@ class _HomeState extends State<Home> {
                           'Thulani Gulube',
                           textAlign: TextAlign.start,
                           style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.02,
+                            //fontSize: MediaQuery.of(context).size.width * 0.02,
+                            fontSize: 35,
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 194, 61, 0),
                           ),
@@ -97,8 +100,8 @@ class _HomeState extends State<Home> {
                           child: Text(
                             'Software Engineer/Developer | Software Architect',
                             style: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.width * 0.016,
+                              //fontSize: MediaQuery.of(context).size.width * 0.016,
+                              fontSize: 20,
                             ),
                           ),
                         ),
@@ -116,13 +119,12 @@ class _HomeState extends State<Home> {
                             children: [
                               Text(
                                 'I am a software engineer/developer and software architect with a passion for building software solutions that solve real-world problems. I have experience in building web and mobile applications, and I am always looking to learn new technologies and improve my skills.',
-                                maxLines: 4,
+                                maxLines: 10,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                  color: Colors.grey[850],
-                                  fontSize:
-                                      MediaQuery.of(context).size.width * 0.01,
-                                ),
+                                    color: Colors.grey[850],
+                                    //fontSize: MediaQuery.of(context).size.width * 0.01,
+                                    fontSize: 18),
                               ),
                             ],
                           ),
@@ -135,9 +137,9 @@ class _HomeState extends State<Home> {
                     Row(
                       children: [
                         /*ElevatedButton(
-                          onPressed: () {},
-                          child: const Text('View Resume'),
-                        ),*/
+                            onPressed: () {},
+                            child: const Text('View Resume'),
+                          ),*/
                         MouseRegion(
                           onEnter: (event) {
                             setState(() {
@@ -184,8 +186,8 @@ class _HomeState extends State<Home> {
                       children: [
                         Text('Socials:   ',
                             style: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.width * 0.016)),
+                                //fontSize: MediaQuery.of(context).size.width * 0.016
+                                fontSize: 30)),
                         // LinkedIn, GitHub, X
                         Tooltip(
                           message: 'LinkedIn',
@@ -375,55 +377,7 @@ class _HomeState extends State<Home> {
             ),
           ),
         ],
-      );
-    } else {
-      return Center(
-        child: Column(
-          children: [
-            Expanded(
-              child: Container(
-                color: Colors.redAccent,
-                child: Center(
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: MediaQuery.of(context).size.width * 0.11,
-                        left: MediaQuery.of(context).size.width * 0.2,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2,
-                            ),
-                          ),
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          height: MediaQuery.of(context).size.width * 0.5,
-                        ),
-                      ),
-                      Positioned(
-                        top: MediaQuery.of(context).size.width * 0.18,
-                        left: MediaQuery.of(context).size.width * 0.3,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 16, 207, 90),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2,
-                            ),
-                          ),
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          height: MediaQuery.of(context).size.width * 0.5,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
+      ),
+    );
   }
 }
