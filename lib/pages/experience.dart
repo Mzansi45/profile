@@ -77,7 +77,7 @@ class _ExperienceState extends State<Experience>
 
   void playNextAnimation() {
     // Check if the current animation has been played 3 times
-    if (_playCount < 3) {
+    if (_playCount < 2) {
       // Play the current animation again
       setState(() {
         _controller
@@ -340,7 +340,8 @@ class _ExperienceState extends State<Experience>
           const SizedBox(height: 30),
           //Projects
           const Text('Projects',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
           //https://lottie.host/9c22447c-3aa1-4639-aede-8fd15a5ee2d6/Uj2PsbGp8l.json
 
           Row(children: [
