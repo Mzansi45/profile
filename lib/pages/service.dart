@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:profile/pages/contact.dart';
 
 class Service extends StatefulWidget {
@@ -58,6 +57,142 @@ class _ServiceState extends State<Service> {
   };
   @override
   Widget build(BuildContext context) {
+    if (MediaQuery.sizeOf(context).width <= 1000) {
+      return Stack(children: [
+        Opacity(
+          opacity: 0.2,
+          child: Align(
+            alignment: Alignment.topRight,
+            child: Image.asset(
+              'assets/images/software.png',
+              width: MediaQuery.of(context).size.width * 0.5,
+              height: MediaQuery.of(context).size.height * 0.5,
+            )
+          ),
+        ),
+        Center(
+          child: Image.asset(
+            'assets/images/bg.png',
+            opacity: const AlwaysStoppedAnimation(0.2),
+            fit: BoxFit.cover,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView(children: [
+            Text(
+              'What I can do for you',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.tertiary),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'I offer a wide range of software development services to help you achieve your business goals.',
+              style: TextStyle(fontSize: 10),
+            ),
+            const SizedBox(height: 20),
+            Center(
+              child: Wrap(
+                children: [
+                  for (int x = 0; x < services.length; x++)
+                    Column(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          margin: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(8, 255, 255, 255),
+                            borderRadius: BorderRadius.circular(10),
+                            
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              //Title
+                              Container(
+                                margin: const EdgeInsets.all(10),
+                                child: Text(services.keys.elementAt(x),
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Theme.of(context).colorScheme.tertiary)),
+                              ),
+              
+                              //Description
+                              Container(
+                                margin: const EdgeInsets.all(10),
+                                child: Text(
+                                  '\u2022  ${services.values.elementAt(x)['description']}',
+                                  style: const TextStyle(fontSize: 10),
+                                ),
+                              ),
+              
+                              //Features
+                              if (services.values.elementAt(x)['features'] != null)
+                                Container(
+                                  margin: const EdgeInsets.all(10),
+                                  child: Text(
+                                    '\u2022  Features:  ${services.values.elementAt(x)['features']}',
+                                    style: const TextStyle(fontSize: 10),
+                                  ),
+                                ),
+              
+                              //Services
+                              if (services.values.elementAt(x)['services'] != null)
+                                Container(
+                                  margin: const EdgeInsets.all(10),
+                                  child: Text(
+                                    '\u2022  Services:  ${services.values.elementAt(x)['services']}',
+                                    style: const TextStyle(fontSize: 10),
+                                  ),
+                                ),
+              
+                              //Technologies
+                              Container(
+                                margin: const EdgeInsets.all(10),
+                                child: Text(
+                                  '\u2022  Technologies:  ${services.values.elementAt(x)['technologies']}',
+                                  style: const TextStyle(fontSize: 10),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                
+                ]
+              ),
+            ),
+
+            //Contact me
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Contact(),
+                            ));
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.tertiary,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              child: Text(
+                'Contact Me',
+                style: TextStyle(fontSize: 10),
+              ),
+            ),
+            
+          ]),
+        ),
+      ]);
+    }
+
     return Stack(
       children: [
         Center(
@@ -114,7 +249,7 @@ class _ServiceState extends State<Service> {
                           width: MediaQuery.of(context).size.width * 0.4,
                           margin: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(8, 255, 255, 255),
+                            color: const Color.fromARGB(8, 255, 255, 255),
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(
@@ -185,7 +320,7 @@ class _ServiceState extends State<Service> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Contact(),
+                              builder: (context) => const Contact(),
                             ));
                       },
                       child: Container(

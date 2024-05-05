@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:floating_action_bubble_custom/floating_action_bubble_custom.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:profile/pages/about.dart';
 import 'package:profile/pages/contact.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Portfolio',
       theme: ThemeData(
-        colorScheme: ColorScheme(
+        colorScheme: const ColorScheme(
           background: Colors.black,
           brightness: Brightness.dark,
           error: Colors.red,
@@ -30,13 +31,14 @@ class MyApp extends StatelessWidget {
           onSecondary: Colors.black,
           onSurface: Colors.white54,
           primary: Colors.white60,
-          secondary: Colors.grey[850]!,
+          secondary: Color.fromARGB(69, 138, 107, 107),
           surface: Colors.black,
-          tertiary: const Color.fromARGB(255, 194, 61, 0),
+          tertiary: Color.fromARGB(255, 194, 61, 0),
         ),
       ),
       //home: const Main(),
-      home: MediaQuery.sizeOf(context).width > 1000
+      //home: MediaQuery.sizeOf(context).width > 1000
+      home: MediaQuery.sizeOf(context).width > 1
           ? const Main()
           : Lottie.network(
               'https://lottie.host/a10e0cc9-f344-458d-abb8-b9f4dfc845de/uhW12fwjKH.json', fit: BoxFit.fill),
@@ -105,19 +107,24 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
     late IconData icon;
     switch (index) {
       case 0:
-        icon = Icons.home;
+        //icon = Icons.home;
+        icon = FontAwesomeIcons.house;
         break;
       case 1:
-        icon = Icons.info;
+        //icon = Icons.info;
+        icon = FontAwesomeIcons.info;
         break;
       case 2:
-        icon = Icons.work;
+        //icon = Icons.work;
+        icon = FontAwesomeIcons.briefcase;
         break;
       case 3:
-        icon = Icons.design_services;
+        //icon = Icons.design_services;
+        icon = FontAwesomeIcons.screwdriverWrench;
         break;
       case 4:
-        icon = Icons.contact_page;
+        //icon = Icons.contact_page;
+        icon = FontAwesomeIcons.addressBook;
         break;
       default:
         icon = Icons.error;
@@ -132,15 +139,14 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
           _pageController.animateToPage(
             index,
             duration: const Duration(milliseconds: 2000),
-            //curve: Curves.easeInOut,
-            curve: Curves.ease,
+            curve: Curves.easeInOut,
           );
           _animationController.reverse();
         });
       },
       child: Icon(
         icon,
-        color: index == _currentPageIndex ? Colors.blue : Colors.grey,
+        color: index == _currentPageIndex ? Theme.of(context).colorScheme.tertiary : Colors.grey,
       ),
     );
   }
@@ -156,144 +162,34 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(pagesName[_currentPageIndex],
-            style: const TextStyle(color: Colors.white)),
-        toolbarHeight: MediaQuery.of(context).size.height * 0.07,
-        actions: [
-          if (MediaQuery.sizeOf(context).width > 600)
-            for (int i = 0; i < pages.length; i++)
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _currentPageIndex = i;
-                    _pageController.animateToPage(
-                      i,
-                      duration: const Duration(milliseconds: 2000),
-                      //curve: Curves.easeInOut,
-                      curve: Curves.ease,
-                    );
-                    _animationController.reverse();
-                  });
-                },
-                child: MouseRegion(
-                  onEnter: (event) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _animationController.reverse();
+        });
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(pagesName[_currentPageIndex],
+              style: const TextStyle(color: Colors.white)),
+          toolbarHeight: MediaQuery.of(context).size.height * 0.07,
+          actions: [
+            if (MediaQuery.sizeOf(context).width > 1000)
+              for (int i = 0; i < pages.length; i++)
+                GestureDetector(
+                  onTap: () {
                     setState(() {
-                      hoveringStates[i] = true;
+                      _currentPageIndex = i;
+                      _pageController.animateToPage(
+                        i,
+                        duration: const Duration(milliseconds: 2000),
+                        //curve: Curves.easeInOut,
+                        curve: Curves.ease,
+                      );
+                      _animationController.reverse();
                     });
                   },
-                  onExit: (event) {
-                    setState(() {
-                      hoveringStates[i] = false;
-                    });
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.08,
-                    height: MediaQuery.of(context).size.height * 0.05,
-                    margin: const EdgeInsets.only(right: 5),
-                    decoration: BoxDecoration(
-                      border: MediaQuery.sizeOf(context).width < 600
-                          ? null
-                          : Border(
-                              bottom: BorderSide(
-                                color: hoveringStates[i]
-                                    ? Colors.blue
-                                    : const Color.fromARGB(255, 194, 61, 0),
-                                width:
-                                    hoveringStates[i] || i == _currentPageIndex
-                                        ? 4
-                                        : 0.5,
-                              ),
-                            ),
-                    ),
-                    child: Center(
-                      child: MediaQuery.of(context).size.width < 600
-                          ? makeIcon(i)
-                          : i == _currentPageIndex
-                              ? AnimatedTextKit(
-                                  animatedTexts: [
-                                    WavyAnimatedText(
-                                      pagesName[i],
-                                      textStyle: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        //fontSize: MediaQuery.of(context).size.width * 0.011,
-                                        fontSize: 20,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .tertiary,
-                                      ),
-                                    ),
-                                  ],
-                                  totalRepeatCount: 50000,
-                                  onTap: () {
-                                    setState(() {
-                                      _currentPageIndex = i;
-                                      _pageController.animateToPage(
-                                        i,
-                                        duration:
-                                            const Duration(milliseconds: 2000),
-                                        //curve: Curves.easeInOut,
-                                        curve: Curves.ease,
-                                      );
-                                      _animationController.reverse();
-                                    });
-                                  },
-                                )
-                              : GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      _currentPageIndex = i;
-                                      _pageController.animateToPage(
-                                        i,
-                                        duration:
-                                            const Duration(milliseconds: 2000),
-                                        //curve: Curves.easeInOut,
-                                        curve: Curves.ease,
-                                      );
-                                      _animationController.reverse();
-                                    });
-                                  },
-                                  child: Text(
-                                    pagesName[i],
-                                    style: TextStyle(
-                                        //fontSize: MediaQuery.of(context).size.width *0.009,
-                                        fontSize: 17),
-                                  ),
-                                ),
-                    ),
-                  ),
-                ),
-              )
-        ],
-      ),
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 400),
-        child: PageView.builder(
-          controller: _pageController,
-          itemCount: pages.length,
-          itemBuilder: (context, index) {
-            return pages[index];
-          },
-        ),
-      ),
-      floatingActionButton: MediaQuery.sizeOf(context).width <= 600
-          ? FloatingActionBubble(
-              animation: _animation,
-              onPressed: () => _animationController.isCompleted
-                  ? _animationController.reverse()
-                  : _animationController.forward(),
-              iconColor: const Color.fromARGB(255, 202, 197, 194),
-              animatedIconData: AnimatedIcons.menu_close,
-              highlightElevation: 0,
-              elevation: 0.1,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(50)),
-              ),
-              backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-              items: [
-                for (int i = 0; i < pages.length; i++)
-                  MouseRegion(
+                  child: MouseRegion(
                     onEnter: (event) {
                       setState(() {
                         hoveringStates[i] = true;
@@ -305,9 +201,9 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
                       });
                     },
                     child: Container(
-                      width: MediaQuery.of(context).size.width * 0.11,
+                      width: MediaQuery.of(context).size.width * 0.08,
                       height: MediaQuery.of(context).size.height * 0.05,
-                      margin: const EdgeInsets.only(bottom: 5),
+                      margin: const EdgeInsets.only(right: 5),
                       decoration: BoxDecoration(
                         border: MediaQuery.sizeOf(context).width < 600
                             ? null
@@ -316,10 +212,10 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
                                   color: hoveringStates[i]
                                       ? Colors.blue
                                       : const Color.fromARGB(255, 194, 61, 0),
-                                  width: hoveringStates[i] ||
-                                          i == _currentPageIndex
-                                      ? 4
-                                      : 0.5,
+                                  width:
+                                      hoveringStates[i] || i == _currentPageIndex
+                                          ? 4
+                                          : 0.5,
                                 ),
                               ),
                       ),
@@ -330,20 +226,25 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
                                 ? AnimatedTextKit(
                                     animatedTexts: [
                                       WavyAnimatedText(
-                                        pages[i].toString(),
-                                        textStyle: const TextStyle(
+                                        pagesName[i],
+                                        textStyle: TextStyle(
                                           fontWeight: FontWeight.bold,
+                                          //fontSize: MediaQuery.of(context).size.width * 0.011,
+                                          fontSize: 20,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .tertiary,
                                         ),
                                       ),
                                     ],
-                                    totalRepeatCount: 100,
+                                    totalRepeatCount: 50000,
                                     onTap: () {
                                       setState(() {
                                         _currentPageIndex = i;
                                         _pageController.animateToPage(
                                           i,
-                                          duration: const Duration(
-                                              milliseconds: 2000),
+                                          duration:
+                                              const Duration(milliseconds: 2000),
                                           //curve: Curves.easeInOut,
                                           curve: Curves.ease,
                                         );
@@ -357,8 +258,8 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
                                         _currentPageIndex = i;
                                         _pageController.animateToPage(
                                           i,
-                                          duration: const Duration(
-                                              milliseconds: 2000),
+                                          duration:
+                                              const Duration(milliseconds: 2000),
                                           //curve: Curves.easeInOut,
                                           curve: Curves.ease,
                                         );
@@ -366,15 +267,49 @@ class _MainState extends State<Main> with SingleTickerProviderStateMixin {
                                       });
                                     },
                                     child: Text(
-                                      pages[i].toString(),
+                                      pagesName[i],
+                                      style: const TextStyle(
+                                          //fontSize: MediaQuery.of(context).size.width *0.009,
+                                          fontSize: 17),
                                     ),
                                   ),
                       ),
                     ),
-                  )
-              ],
-            )
-          : null,
+                  ),
+                )
+          ],
+        ),
+        body: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 400),
+          child: PageView.builder(
+            controller: _pageController,
+            itemCount: pages.length,
+            itemBuilder: (context, index) {
+              return pages[index];
+            },
+          ),
+        ),
+        floatingActionButton: MediaQuery.sizeOf(context).width <= 1000
+            ? FloatingActionBubble(
+                animation: _animation,
+                onPressed: () => _animationController.isCompleted
+                    ? _animationController.reverse()
+                    : _animationController.forward(),
+                iconColor: const Color.fromARGB(255, 202, 197, 194),
+                animatedIconData: AnimatedIcons.menu_close,
+                highlightElevation: 0,
+                elevation: 0.1,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(50)),
+                ),
+                backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                items: [
+                  for (int i = 0; i < pages.length; i++)
+                    makeIcon(i),
+                ],
+              )
+            : null,
+      ),
     );
   }
 }

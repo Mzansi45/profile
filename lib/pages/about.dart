@@ -62,8 +62,174 @@ class _AboutState extends State<About> {
         'I am creative and enjoy thinking outside the box to come up with innovative solutions.',
   };
 
+  final Map<String, IconData> icons = {
+    'Problem Solving': Icons.build,
+    'Teamwork': Icons.group,
+    'Communication': Icons.chat,
+    'Time Management': Icons.access_time,
+    'Adaptability': Icons.settings,
+    'Creativity': Icons.palette,
+  };
+
   @override
   Widget build(BuildContext context) {
+    if (MediaQuery.sizeOf(context).width <= 1000) {
+      return Padding(
+        padding: const EdgeInsets.all(10),
+        child: ListView(children: [
+          Text(
+            'Hello! I\'m Thulani, a versatile software developer proficient in mobile development with Flutter and Xamarin, web development using HTML, CSS, and JavaScript, database management with SQL, backend development with Java and Spring Boot, and game development with Unity and C#. With a strong foundation in software engineering principles, I specialize in crafting seamless user experiences and scalable solutions across various platforms. Whether it\'s building intuitive mobile apps, dynamic web applications, robust backend systems, or captivating games, I bring creativity, expertise, and a passion for innovation to every project I undertake.',
+            style: TextStyle(
+                //fontSize: MediaQuery.sizeOf(context).width * 0.014,
+                fontSize: 10,
+                color: Theme.of(context).colorScheme.primary),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
+
+          //soft skills
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: CommentTreeWidget<Comment, Comment>(
+              Comment(
+                  avatar: 'Soft Skills',
+                  userName: 'Soft Skills',
+                  content: 'null'),
+              [
+                for (String skill in softSkills.keys)
+                  Comment(
+                      avatar: 'null',
+                      userName: skill,
+                      content: softSkills[skill]!),
+              ],
+              treeThemeData: TreeThemeData(
+                  lineColor: Theme.of(context).colorScheme.tertiary,
+                  lineWidth: 1),
+              avatarRoot: (context, data) => const PreferredSize(
+                preferredSize: Size.fromRadius(18),
+                child: CircleAvatar(
+                  radius: 18,
+                  child: Icon(Icons.supervisor_account_outlined),
+                ),
+              ),
+              avatarChild: (context, data) =>  PreferredSize(
+                preferredSize: const Size.fromRadius(12),
+                child: CircleAvatar(
+                  radius: 12,
+                  child: Icon(icons[data.userName]),
+                ),
+              ),
+              contentChild: (context, data) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          data.userName!,
+                          textAlign: TextAlign.start,
+                          style:TextStyle(
+                              color: Theme.of(context).colorScheme.onSurface,
+                              //fontSize: MediaQuery.sizeOf(context).width * 0.008,
+                              fontSize: 17),
+                        ),
+                        const Spacer()
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 10),
+                            child: Text(
+                              '\u2022 ${data.content!}',
+                              maxLines: 6,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.start,
+                              style: const TextStyle(
+                                  //color: Theme.of(context).colorScheme.shadow,
+                                  //fontSize: MediaQuery.sizeOf(context).width * 0.008,
+                                  fontSize: 12),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                );
+              },
+              contentRoot: (context, data) {
+                return Text(data.userName!,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      //fontSize: MediaQuery.sizeOf(context).width * 0.009
+                      fontSize: 20,
+                      color: Colors.white,
+                      //color: Theme.of(context).colorScheme.background
+                    ));
+              },
+            ),
+          ),
+
+          //technical skills
+          Center(
+            child: Wrap(
+              children: [
+                for (int x = 0; x < technicalSkills.length; x++)
+                  Container(
+                    width: MediaQuery.sizeOf(context).width <= 500 ? MediaQuery.sizeOf(context).width * 0.4 : MediaQuery.sizeOf(context).width * 0.3,
+                    //height: MediaQuery.sizeOf(context).height * 0.2,
+                    padding: const EdgeInsets.all(5),
+                    margin: const EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.tertiary,
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(2),
+                    ),
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          // Check if imageIcons is not empty before using firstWhere
+                          imageIcons.isNotEmpty
+                              ? imageIcons.firstWhere(
+                                  (element) =>
+                                      element.contains(technicalSkills.keys.elementAt(x).toLowerCase()),
+                                  // Provide a default value in case no matching element is found
+                                  orElse: () => 'assets/image/software.png',
+                                )
+                              : 'assets/image/software.png', // Use a default image path if imageIcons is empty
+                          height: MediaQuery.of(context).size.height * 0.1,
+                          fit: BoxFit.scaleDown,
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          technicalSkills.keys.elementAt(x),
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: Theme.of(context).colorScheme.onBackground),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          technicalSkills.values.elementAt(x),
+                          maxLines: 6,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Theme.of(context).colorScheme.primary),
+                        ),
+                      ],
+                    )  
+                  )
+              ]
+            ),
+          ),
+
+        ]),
+      );
+    }
+
     return Stack(
       //main screen
 
@@ -106,8 +272,8 @@ class _AboutState extends State<About> {
                       width: MediaQuery.sizeOf(context).width * 0.3,
                       //height: MediaQuery.sizeOf(context).height * 0.1,
                       color: Theme.of(context).colorScheme.secondary,
-                      margin: EdgeInsets.all(5),
-                      padding: EdgeInsets.all(5),
+                      margin: const EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       child: SingleChildScrollView(
                         child: CommentTreeWidget<Comment, Comment>(
                           Comment(

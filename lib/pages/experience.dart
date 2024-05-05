@@ -115,6 +115,379 @@ class _ExperienceState extends State<Experience>
 
   @override
   Widget build(BuildContext context) {
+    if (MediaQuery.sizeOf(context).width <= 1000) {
+      return ListView(
+        children: [
+          TimelineTile(
+            isFirst: true,
+            alignment: TimelineAlign.manual,
+            lineXY: 0.45,
+            indicatorStyle: const IndicatorStyle(
+              width: 30,
+              height: 30,
+              indicator: Icon(
+                FontAwesomeIcons.bookOpen,
+                color: Colors.white,
+              ),
+            ),
+            afterLineStyle: LineStyle(
+              thickness: 2,
+              color: Theme.of(context).colorScheme.tertiary,
+            ),
+            beforeLineStyle: LineStyle(
+              thickness: 2,
+              color: Theme.of(context).colorScheme.tertiary,
+            ),
+            startChild: Container(
+              margin: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(8),
+              child: const Center(
+                child: Column(
+                  children: [
+                    Text('Qualification 1',
+                        //textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 14)),
+                    SizedBox(height: 10),
+                    Text('Matri Certificate', style: TextStyle(fontSize: 12)),
+                  ],
+                ),
+              ),
+            ),
+            endChild: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text('2018'),
+            ),
+          ),
+          TimelineDivider(
+            begin: 0.45,
+            end: 0.55,
+            thickness: 2,
+            color: Theme.of(context).colorScheme.tertiary,
+          ),
+
+          // TimelineTile for the first qualification
+          TimelineTile(
+            alignment: TimelineAlign.manual,
+            lineXY: 0.55,
+            indicatorStyle: const IndicatorStyle(
+              width: 30,
+              height: 30,
+              indicator: Icon(
+                FontAwesomeIcons.graduationCap,
+                color: Colors.white,
+              ),
+            ),
+            afterLineStyle: LineStyle(
+              thickness: 2,
+              color: Theme.of(context).colorScheme.tertiary,
+            ),
+            beforeLineStyle: LineStyle(
+              thickness: 2,
+              color: Theme.of(context).colorScheme.tertiary,
+            ),
+            startChild: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text('2023', textAlign: TextAlign.end),
+            ),
+            endChild: Container(
+              width: MediaQuery.of(context).size.width * 0.4,
+              margin: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text('Qualification 2',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 14)),
+                    const SizedBox(height: 10),
+                    const Text('University of Johannesburg',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(fontSize: 12)),
+                    const SizedBox(height: 5),
+
+                    // Qualification: BSc in Info Tech in Com Sc&Informatics
+                    RichText(
+                      text: TextSpan(
+                        text: 'Qualification: ',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 12,
+                        ),
+                        children: const [
+                          TextSpan(
+                            text: 'BSc in Info Tech in Com Sc&Informatics',
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal, fontSize: 12),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+
+                    // RichText for the qualification type
+                    RichText(
+                      text: TextSpan(
+                        text: 'Qualification Type: ',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 12,
+                        ),
+                        children: const <TextSpan>[
+                          TextSpan(
+                            text: "Bachelor's Degree (360 - NQF level 7)",
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal, fontSize: 12),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          TimelineDivider(
+            begin: 0.45,
+            end: 0.55,
+            thickness: 2,
+            color: Theme.of(context).colorScheme.tertiary,
+          ),
+
+          // TimelineTile for work experience
+          TimelineTile(
+            alignment: TimelineAlign.manual,
+            lineXY: 0.45,
+            indicatorStyle: const IndicatorStyle(
+              width: 30,
+              height: 30,
+              indicator: Icon(
+                Icons.work,
+                color: Colors.white,
+              ),
+            ),
+            afterLineStyle: LineStyle(
+              thickness: 2,
+              color: Theme.of(context).colorScheme.tertiary,
+            ),
+            beforeLineStyle: LineStyle(
+              thickness: 2,
+              color: Theme.of(context).colorScheme.tertiary,
+            ),
+            startChild: Container(
+              width: MediaQuery.of(context).size.width * 0.4,
+              margin: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Text('Work Experience',
+                        //textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 14)),
+                    const SizedBox(height: 10),
+                    // Title: Software Developer
+                    const Text('Software Developer',
+                        //textAlign: TextAlign.end,
+                        style: TextStyle(fontSize: 12)),
+                    const SizedBox(height: 5),
+
+                    //rich text for the Company: Company Name
+                    RichText(
+                      text: TextSpan(
+                        text: 'Company: ',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 12,
+                        ),
+                        children: const <TextSpan>[
+                          TextSpan(
+                            text: 'Simulated Training Solutions (STS3D)',
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal, fontSize: 12),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            endChild: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text('2024'),
+            ),
+          ),
+
+          const SizedBox(height: 30),
+          //Projects
+          const Text('Projects',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+
+          Container(
+            margin: const EdgeInsets.all(20),
+            height: MediaQuery.of(context).size.height * 0.5,
+            color: Theme.of(context).colorScheme.secondary,
+
+            //child: Lottie.network('https://lottie.host/9c22447c-3aa1-4639-aede-8fd15a5ee2d6/Uj2PsbGp8l.json',),
+            child: Lottie.network(
+              animationUrls[currentIndex],
+              controller: _controller,
+              onLoaded: (composition) {
+                _controller
+                  ..duration = composition.duration
+                  ..forward();
+              },
+            ),
+          ),
+
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.5,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    const Spacer(),
+                    IconButton(
+                      icon: const Icon(Icons.arrow_back_ios),
+                      onPressed: () {
+                        setState(
+                          () {
+                            currentProject--;
+                            if (currentProject < 0) {
+                              currentProject = projects.length - 1;
+                            }
+                          },
+                        );
+                      },
+                      style: ButtonStyle(
+                          // corner radius top left and bottom left
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  bottomLeft: Radius.circular(10),
+                                ),
+                                side: BorderSide(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .tertiary)),
+                          ),
+                          fixedSize: MaterialStateProperty.all<Size>(Size(
+                              MediaQuery.sizeOf(context).width * 0.13,
+                              MediaQuery.sizeOf(context).height * 0.0015))),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      height: MediaQuery.of(context).size.height * 0.062,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Theme.of(context).colorScheme.tertiary,
+                          width: 1,
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          projects.keys.elementAt(currentProject),
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.arrow_forward_ios),
+                      onPressed: () {
+                        setState(
+                          () {
+                            currentProject++;
+                            if (currentProject >= projects.length) {
+                              currentProject = 0;
+                            }
+                          },
+                        );
+                      },
+                      style: ButtonStyle(
+                          // corner radius top right and bottom right
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: const BorderRadius.only(
+                                topRight: Radius.circular(10),
+                                bottomRight: Radius.circular(10),
+                              ),
+                              side: BorderSide(
+                                  color:
+                                      Theme.of(context).colorScheme.tertiary),
+                            ),
+                          ),
+                          fixedSize: MaterialStateProperty.all<Size>(Size(
+                              MediaQuery.sizeOf(context).width * 0.13,
+                              MediaQuery.sizeOf(context).height * 0.0015))),
+                    ),
+                    const Spacer(),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  margin: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20 ),
+                  child: Text(
+                    projects.values.elementAt(currentProject)["description"],
+                    style: const TextStyle(fontSize: 14),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    if (projects.values.elementAt(currentProject)["url"] !=
+                        "") {
+                      // Open the project URL in a web browser
+                      //_launch(projects.values.elementAt(currentProject)["url"]);
+                      _launchUrl(
+                          projects.values.elementAt(currentProject)["url"]);
+                    } else {
+                      // Show a dialog box if the project URL is not available
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text('Project URL not available'),
+                            content: Lottie.network(
+                              'https://lottie.host/5fad98dd-bc47-4288-8d86-9926066b3caf/BOTXNImJGK.json',
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text('Close'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+                  },
+                  child: const Text('View Project'),
+                ),
+              ],
+            ),
+          )
+        ],
+      );
+    }
+
     return Container(
       margin: const EdgeInsets.all(50),
       child: Center(
@@ -370,7 +743,7 @@ class _ExperienceState extends State<Experience>
             ),
 
             //segmented control (prev, Name of current project, next)
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.5,
               child: Column(
                 children: [
